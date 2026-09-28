@@ -182,3 +182,11 @@ body { background: var(--mint); color: var(--choc); font: 400 17px/1.6 var(--tex
   .form { padding: 22px; }
   .cup::after { right: -26px; width: 56px; height: 74px; border-width: 13px; }
 }
+
+/* Фишка: фестоны навеса колышутся, пока страницу листают (класс wind ставит site.js). */
+@media (prefers-reduced-motion: no-preference) {
+  .header { overflow-x: clip; } /* наклонённые фестоны не должны давать прокрутку вбок */
+  .awning::after { transform-origin: 50% 0; }
+  .awning.wind::after { animation: flutter .45s ease-in-out 2 alternate; }
+  @keyframes flutter { to { transform: skewX(18deg) scaleY(1.3); } }
+}

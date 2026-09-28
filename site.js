@@ -14,3 +14,12 @@
     out.value = d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' }) + ', ' + DAYS[d.getDay()];
   });
 })();
+
+// Навес колышется от «ветра» прокрутки: взмах туда-обратно, потом снова, если листают дальше.
+(function () {
+  'use strict';
+  var awning = document.querySelector('.awning');
+  if (!awning || !window.matchMedia('(prefers-reduced-motion: no-preference)').matches) return;
+  addEventListener('scroll', function () { awning.classList.add('wind'); }, { passive: true });
+  awning.addEventListener('animationend', function () { awning.classList.remove('wind'); });
+})();
