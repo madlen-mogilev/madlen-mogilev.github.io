@@ -190,3 +190,10 @@ body { background: var(--mint); color: var(--choc); font: 400 17px/1.6 var(--tex
   .awning.wind::after { animation: flutter .45s ease-in-out 2 alternate; }
   @keyframes flutter { to { transform: skewX(18deg) scaleY(1.3); } }
 }
+
+/* Фон секции: ИИ-текстура (Cloudflare Workers AI) под заливкой цвета сайта — декор, не фото бизнеса.
+   На компьютере картинка закреплена за окном — при прокрутке секция работает как окно (параллакс). */
+.order { background: linear-gradient(color-mix(in srgb, var(--rasp) 78%, transparent), color-mix(in srgb, var(--rasp) 90%, transparent)), url('img/bg-order.webp') center / cover var(--rasp); }
+@media (hover: hover) and (pointer: fine) {
+  .order { background-attachment: scroll, fixed; }
+}
